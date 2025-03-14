@@ -1,14 +1,14 @@
 FROM python:3.10-slim
 
-Label author="Nico4dev" maintainer="discord blitz4dev"
+LABEL author="Nico4dev" maintainer="discord blitz4dev"
 
 RUN         apt update \
             && apt -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps tmux \
             && useradd -m -d /home/container containe
 
 
-user container
-ENV USER=container home /home/container
+USER container
+ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 COPY ./entrypoint.sh /entrypoint.sh
